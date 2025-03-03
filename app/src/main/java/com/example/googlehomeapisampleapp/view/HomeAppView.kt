@@ -37,6 +37,7 @@ import com.example.googlehomeapisampleapp.view.automations.DraftView
 import com.example.googlehomeapisampleapp.view.automations.StarterView
 import com.example.googlehomeapisampleapp.view.devices.DeviceView
 import com.example.googlehomeapisampleapp.view.devices.DevicesView
+import com.example.googlehomeapisampleapp.view.settings.SettingsView
 import com.example.googlehomeapisampleapp.viewmodel.HomeAppViewModel
 import com.example.googlehomeapisampleapp.viewmodel.automations.ActionViewModel
 import com.example.googlehomeapisampleapp.viewmodel.automations.AutomationViewModel
@@ -111,6 +112,8 @@ fun HomeAppView (homeAppVM: HomeAppViewModel) {
                 when (selectedTab) {
                     HomeAppViewModel.NavigationTab.DEVICES -> DevicesView(homeAppVM)
                     HomeAppViewModel.NavigationTab.AUTOMATIONS -> AutomationsView(homeAppVM)
+                    // TODO: Erwin add Settings
+                    HomeAppViewModel.NavigationTab.SETTINGS -> SettingsView(homeAppVM)
                 }
             }
         }

@@ -13,6 +13,7 @@
 
     <string name="tab_button_devices">Devices</string>
     <string name="tab_button_automations">Automations</string>
+    <string name="tab_button_settings">Settings</string>
 
     <string name="devices_structure_loading">Loading...</string>
     <string name="devices_button_add">+ Add Device</string>
@@ -65,5 +66,7 @@
     <string name="automation_text_is_active">isActive</string>
     <string name="automation_button_execute">Manually Execute</string>
     <string name="automation_button_delete">Delete Automation</string>
+
+    <string name="settings_button_dump">Dump Structure to ADB log</string>
 
 </resources>

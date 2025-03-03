@@ -36,7 +36,8 @@ class HomeAppViewModel (val homeApp: HomeApp) : ViewModel() {
     // Tabs showing main capabilities of the app:
     enum class NavigationTab {
         DEVICES,
-        AUTOMATIONS
+        AUTOMATIONS,
+        SETTINGS
     }
 
     // Container tracking the active navigation tab:

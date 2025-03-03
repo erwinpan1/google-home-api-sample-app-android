@@ -60,6 +60,11 @@ fun TabbedMenuView (homeAppVM: HomeAppViewModel) {
                     homeAppVM.viewModelScope.launch{
                         homeAppVM.selectedTab.emit(HomeAppViewModel.NavigationTab.AUTOMATIONS)
                     }})
+            Column(content = { SettingsButtonContent(homeAppVM) },
+                   modifier = Modifier.fillMaxWidth().weight(1f).padding(16.dp).clickable{
+                       homeAppVM.viewModelScope.launch{
+                           homeAppVM.selectedTab.emit(HomeAppViewModel.NavigationTab.SETTINGS)
+                       }})
         }
         // Spacer to offset the system gesture bars for edge-to-edge applications:
         Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
@@ -89,5 +94,18 @@ fun AutomationsButtonContent (homeAppVM: HomeAppViewModel) {
         Icon(imageVector = ImageVector.vectorResource(R.drawable.icon_automations), "",
             Modifier.size(36.dp).background(Color.Transparent), tint = buttonColor)
         Text(stringResource(R.string.tab_button_automations), color = buttonColor)
+    }
+}
+
+@Composable
+fun SettingsButtonContent (homeAppVM: HomeAppViewModel) {
+    val selectedTab: HomeAppViewModel.NavigationTab = homeAppVM.selectedTab.collectAsState().value
+    val isSelected: Boolean = (selectedTab == HomeAppViewModel.NavigationTab.SETTINGS)
+    val buttonColor: Color = if (isSelected) MaterialTheme.colorScheme.primary else Color.DarkGray
+
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+        Icon(imageVector = ImageVector.vectorResource(R.drawable.baseline_settings_24), "",
+             Modifier.size(36.dp).background(Color.Transparent), tint = buttonColor)
+        Text(stringResource(R.string.tab_button_settings), color = buttonColor)
     }
 }
