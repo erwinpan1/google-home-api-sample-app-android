@@ -16,6 +16,7 @@ limitations under the License.
 
 package com.example.googlehomeapisampleapp.viewmodel.structures
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.googlehomeapisampleapp.viewmodel.automations.AutomationViewModel
@@ -24,6 +25,8 @@ import com.example.googlehomeapisampleapp.viewmodel.devices.DeviceViewModel
 import com.google.home.Structure
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+
+private const val TAG  = "StructureViewModel"
 
 class StructureViewModel (val structure: Structure) : ViewModel() {
 
@@ -73,10 +76,12 @@ class StructureViewModel (val structure: Structure) : ViewModel() {
     private suspend fun subscribeToDevices() {
         // Subscribe to changes on devices:
         structure.devices().collect { deviceSet ->
+            Log.d(TAG, "[GHP][Device] onDeviceChanged : ${deviceSet.size}}")
             val deviceVMs = mutableListOf<DeviceViewModel>()
             val deviceWithoutRoomVMs = mutableListOf<DeviceViewModel>()
             // Store devices in container ViewModels:
             for (device in deviceSet) {
+                Log.d(TAG, "[GHP][Device] onDeviceChanged : ${device.name}}")
                 val deviceVM = DeviceViewModel(device)
                 deviceVMs.add(deviceVM)
                 // For any device that's not in a room, additionally keep track of a separate list:
