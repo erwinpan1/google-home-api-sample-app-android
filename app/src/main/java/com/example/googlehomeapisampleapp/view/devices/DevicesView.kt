@@ -100,6 +100,7 @@ fun DevicesView (homeAppVM: HomeAppViewModel) {
                 Row (horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
                     Box {
                         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+// TODO: 5.1.2 - Show a list of structures to select
                             for (structure in structureVMs) {
                                 DropdownMenuItem(
                                     text = { Text(structure.name) },

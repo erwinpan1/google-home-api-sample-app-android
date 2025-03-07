@@ -84,6 +84,7 @@ class HomeAppViewModel (val homeApp: HomeApp) : ViewModel() {
         // Subscribe to structures returned by the Structures API:
         homeApp.homeClient.structures().collect { structureSet ->
             val structureVMList: MutableList<StructureViewModel> = mutableListOf()
+// TODO: 5.1.1 - Subscribe the structure data changes
             // Store structures in container ViewModels:
             for (structure in structureSet) {
                 structureVMList.add(StructureViewModel(structure))

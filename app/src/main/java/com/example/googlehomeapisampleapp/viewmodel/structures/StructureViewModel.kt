@@ -60,6 +60,7 @@ class StructureViewModel (val structure: Structure) : ViewModel() {
     private suspend fun subscribeToRooms() {
         // Subscribe to changes on rooms:
         structure.rooms().collect { roomSet ->
+// TODO: 5.2.1 - Subscribe the room data changes
             val roomVMs = mutableListOf<RoomViewModel>()
             // Store rooms in container ViewModels:
             for (room in roomSet) {
@@ -75,6 +76,7 @@ class StructureViewModel (val structure: Structure) : ViewModel() {
         structure.devices().collect { deviceSet ->
             val deviceVMs = mutableListOf<DeviceViewModel>()
             val deviceWithoutRoomVMs = mutableListOf<DeviceViewModel>()
+// TODO: 5.2.2 - Subscribe the device data changes
             // Store devices in container ViewModels:
             for (device in deviceSet) {
                 val deviceVM = DeviceViewModel(device)
