@@ -1510,7 +1510,7 @@ class Tester private constructor(private val homeClientRef: HomeClient) : ViewMo
         }
     }
     private suspend fun dumpDeviceType(deviceType: DeviceType) {
-        Log.i(TAG, "==== Dump DeviceType: $deviceType")
+        Log.d(TAG, "==== Dump DeviceType: $deviceType")
         deviceType.apply {
             Log.d(TAG, "====== Dump DeviceType factory: ${this.factory}")
             Log.d(TAG, "====== Dump DeviceType metadata: ${this.metadata}")
@@ -1544,18 +1544,15 @@ class Tester private constructor(private val homeClientRef: HomeClient) : ViewMo
             //
             dumpDeviceType(deviceType)
         }
-        device.types().collectLatest { devieTypes ->
-            Log.d(TAG, "=== Dump Device: gotten latest devieTypes: ${devieTypes}")
-        }
         Log.i(TAG, "=== Dump Device: Done")
     }
     private suspend fun dumpStructure(structure: Structure) {
-        Log.i(TAG, "== Dump devices of structure: $structure")
+        Log.i(TAG, "== Dump Structure: $structure")
         val devicesFlow = structure.devices()
         devicesFlow.list().forEach { device ->
             dumpDevice(device)
         }
-        Log.i(TAG, "== Dump devices of structure: Done")
+        Log.i(TAG, "== Dump Structure: Done")
     }
     private suspend fun shortestPathFromHomeToAttribute() {
         Log.d(TAG, "shortestPathFromHomeToAttribute !!!! ")

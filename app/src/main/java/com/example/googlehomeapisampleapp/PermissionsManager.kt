@@ -43,6 +43,7 @@ class PermissionsManager(val context: Context, val scope: CoroutineScope, val ac
 
     private fun checkPermissions() {
         scope.launch {
+            // TODO: We should use collect() instead of first() to continuously monitor the state changes
             // Check and wait until getting the first permission state after initialization:
             val permissionsState: PermissionsState = client.hasPermissions().first { state ->
                 state != PermissionsState.PERMISSIONS_STATE_UNINITIALIZED
@@ -57,6 +58,7 @@ class PermissionsManager(val context: Context, val scope: CoroutineScope, val ac
     fun requestPermissions() {
         scope.launch {
             try {
+// TODO: 4.1.1 Request the permissions from the Permissions API
                 // Request permissions from the Permissions API and record the result:
                 val result: PermissionsResult = client.requestPermissions(forceLaunch = true)
                 // Adjust the sign-in status according to permission result:

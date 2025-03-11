@@ -79,6 +79,7 @@ class HomeApp(val context: Context, val scope: CoroutineScope, val activity : Co
     companion object {
         // List of supported device types by this app:
         val supportedTypes: List<DeviceTypeFactory<out DeviceType>> = listOf(
+            // TODO: 4.1 Non-registered device types will be unsupported
             OnOffLightDevice,
             DimmableLightDevice,
             ColorTemperatureLightDevice,
